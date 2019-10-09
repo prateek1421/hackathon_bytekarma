@@ -7,7 +7,8 @@ import "./App.css";
 import AddExpenses from "./component/addExpenses";
 import Trade from "./component/trade";
 import Footer from "./component/footer";
-
+import axios from "axios";
+axios.defaults.baseURL="https://carma-function.azurewebsites.net";
 function App() {
   return (
     <React.Fragment>

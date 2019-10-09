@@ -9,7 +9,7 @@ const Navigaion = props => {
         id="navi-toggle"
       />
 
-      <label for="navi-toggle" className="navigation__button">
+      <label htmlFor="navi-toggle" className="navigation__button">
         <span className="navigation__icon">&nbsp;</span>
       </label>
 
@@ -33,7 +33,10 @@ const Navigaion = props => {
             </a>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link navigation__width">
+            <a
+              href="#section-stories"
+              className="navigation__link navigation__width"
+            >
               trade
             </a>
           </li>

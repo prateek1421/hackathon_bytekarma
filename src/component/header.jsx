@@ -11,11 +11,11 @@ class Header extends Component {
     console.log("urlDataArray");
     axios.get("/api/dashoboard/"+urlDataArray[urlDataArray.length-1])
     .then(json=>{
-      console.log("json.data");
+      console.log("json.data"); 
       console.log(json.data);
-    this.setState({carbonPointsUsed: json.data.CarbonPointsUsed,
-      totalCarbonPoints: json.data.TotalCarbonPoints,
-      percent:(json.data.CarbonPointsUsed*100/json.data.TotalCarbonPoints)
+    this.setState({carbonPointsUsed: json.data[0].CarbonPointsUsed,
+      totalCarbonPoints: json.data[0].TotalCarbonPoints,
+      percent:(json.data[0].CarbonPointsUsed*100/json.data[0].TotalCarbonPoints).toFixed(2)
     })
     }).catch(function(error){console.log(error);});
   }

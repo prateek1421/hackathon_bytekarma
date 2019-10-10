@@ -23,7 +23,7 @@ const Navigaion = props => {
             </a>
           </li>
           <li className="navigation__item">
-            <a href="#" className="navigation__link navigation__width">
+            <a href="#sunburst-section" className="navigation__link navigation__width">
              Carbon expenses
             </a>
           </li>

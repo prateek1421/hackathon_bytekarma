@@ -32,7 +32,7 @@ class Header extends Component {
             </div>
           </h1>
   
-          <a href="#section-tours" className="btn btn--white btn--animated">
+          <a href="#sunburst-section" className="btn btn--white btn--animated">
             Your Carbon Expenses
           </a>
         </div>

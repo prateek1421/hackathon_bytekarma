@@ -34,18 +34,12 @@ const Navigaion = props => {
           </li>
           <li className="navigation__item">
             <a
-              href="#section-stories"
+              href="#tradeSection"
               className="navigation__link navigation__width"
             >
               trade
             </a>
-          </li>
-
-          <li className="navigation__item ">
-            <a href="#" className="navigation__link navigation__width">
-              faq
-            </a>
-          </li>
+          </li>         
         </ul>
       </nav>
     </div>

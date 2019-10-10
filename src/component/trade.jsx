@@ -84,7 +84,7 @@ class Trade extends Component {
   changeRate = () => {};
   render() {
     return (
-      <section className="section-stories">
+      <section className="section-stories" id="tradeSection">
         <div className="u-center-text u-margin-bottom-big">
           <h2 className="heading-secondary">Offset and carbon credits</h2>
         </div>

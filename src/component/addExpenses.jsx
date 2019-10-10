@@ -39,8 +39,8 @@ class AddExpense extends Component {
     console.log(this.state.selectedDate);
     console.log(this.state.amount);
     axios.post("/api/addTransaction/"+this.props.user.id, {
-      item: itemType,
-      itemType: this.state.selectedItemType,
+      item: this.state.selectedItemType,
+      itemType: itemType,
       description: this.state.selectedItemDescription,
       dateTime: this.state.selectedDate,
       transactionCost: this.state.amount,

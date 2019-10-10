@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import { Alert } from "reactstrap";
 
 class AddExpense extends Component {
   constructor(props,context) {
@@ -12,7 +13,9 @@ class AddExpense extends Component {
       selectedItemDescription: "",
       selectedDate : "",
       defaultValue : "Please select item",
-      amount : ""
+      amount : "",
+      submitSuccessfulMessage : "Expenses submitted successfully",
+      showSuccessMessage : false
     };
   }
 
@@ -31,21 +34,24 @@ class AddExpense extends Component {
         itemType = "Transport";
     }
     let urlDataArray = document.location.href.split("/");
-    console.log("urlDataArray");
-    console.log(this.props.user.id);
-    console.log(itemType);
-    console.log(this.state.selectedItemType);
-    console.log(this.state.selectedItemDescription);
-    console.log(this.state.selectedDate);
-    console.log(this.state.amount);
     axios.post("/api/addTransaction/"+this.props.user.id, {
       item: this.state.selectedItemType,
       itemType: itemType,
       description: this.state.selectedItemDescription,
       dateTime: this.state.selectedDate,
       transactionCost: this.state.amount,
-    }).then(json=>console.log(json.data));
+    }).then(json=>{
+      console.log("json"+json.data)
+      this.setState({showSuccessMessage : true});
+    });
     return false;
+  }
+
+  clear = ()=>{
+    this.state({selectedItemType: ""});
+    this.state({selectedItemDescription: ""})
+    this.state({selectedDate: ""})
+    this.state({amount: ""})
   }
 
   handleDateChange = date => {
@@ -65,7 +71,18 @@ class AddExpense extends Component {
     console.log(event.target.value);
     this.setState({amount : event.target.value});
   }
-
+  handleDismiss =() => {
+    this.setState({ showSuccessMessage: false });
+    this.setState({selectedItemType: ""});
+    this.setState({selectedItemDescription: ""})
+    this.setState({selectedDate: ""})
+    this.setState({amount: ""})
+  }
+setMessageHidden=()=>{
+  setTimeout( 
+    this.handleDismiss
+  , 3000);
+}
   render() {
     
     return (
@@ -76,12 +93,14 @@ class AddExpense extends Component {
         <div className="row">
           <div className="book2">
             <div className="book__form">
-               
-  
+              {this.state.showSuccessMessage ? this.setMessageHidden():null}
+            {this.state.showSuccessMessage ? (
+          <p className="successMessage"><h2>Expenses saved successfully</h2></p>
+            ): ("")}
                 <div className="form__group">
-                  <label htmlFor="name" className="form__label">
-                  Item
-                  </label>
+                <label className="form_label_size">
+                          Item &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
                   <select
                             id="largex"
                             name="itemType"
@@ -104,24 +123,24 @@ class AddExpense extends Component {
                   </select>
                 </div>
                 <div className="form__group">
-                  <label htmlFor="name" className="form__label">
-                    Description
-                  </label>
+                <label className="form_label_size">
+                          Desc &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
                   <input type="text" value={this.state.selectedItemDescription}  
                   className="form__input form__input__width" onChange={this.handleDescription}/>
                 </div>
                 <div className="form__group">
-                <label  className="form__label">
-                    Date
-                  </label>
+                <label className="form_label_size">
+                          Date &nbsp;: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </label>
                 <DatePicker selected={this.state.selectedDate} className="form__input form__input__width"
                 onSelect={this.handleDateChange} dateFormat="MM/dd/yyyy" />
                 </div>
                 <div className="form__group">
-                <label htmlFor="email" className="form__label">
-                    Amount
-                  </label>
-                <input type="text" className="form__input form__input__width" onChange={this.handleAmount}/>
+                <label className="form_label_size">
+                          Amount &nbsp;: &nbsp;
+                        </label>
+                <input type="text" value = {this.state.amount} className="form__input form__input__width" onChange={this.handleAmount}/>
                 </div>
                 <div className="form__group">
                   <button className="btn btn--green" onClick={this.addExpenses}>Submit &rarr;</button>

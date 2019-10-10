@@ -15,7 +15,8 @@ class Trade extends Component {
     carbonUnit : "",
     schemeKey: "",
     schemeCost: "",
-    schemeValue: ""
+    schemeValue: "",
+    showSuccessMessage: false
   };
   switchRadios = flag => {
     console.log("---------");
@@ -52,7 +53,8 @@ class Trade extends Component {
       carbonPoints : this.state.carbonUnit,
       price : price,
       dateTime : dateFormat(newDate,"mm-dd-yyyy")
-      }).then(json=>console.log(json.data));
+      }).then(json=> {console.log(json.data);
+      this.setState({showSuccessMessage: true})});
     }
     else {
       axios.post("/api/addOffset/"+this.props.user.id, {
@@ -81,6 +83,19 @@ class Trade extends Component {
   changeCost = (event) => {
     this.setState({schemeCost :event.target.value})
   };
+  handleDismiss =() => {
+    this.setState({ showSuccessMessage: false });
+    this.setState({schemeValue: ""});
+    this.setState({schemeCost: ""})
+    this.setState({tradeType: ""})
+    this.setState({carbonUnit: ""})
+  }
+  setMessageHidden=()=>{
+    setTimeout( 
+      this.handleDismiss
+    , 3000);
+  }
+
   changeRate = () => {};
   render() {
     return (
@@ -93,6 +108,10 @@ class Trade extends Component {
           <div className="row">
             <div className="book">
               <div className="book__form">
+                {this.state.showSuccessMessage ? this.setMessageHidden():null}
+                {this.state.showSuccessMessage ? (
+          <p className="successMessage"><h2>Expenses saved successfully</h2></p>
+            ): ("")}
                   <div className="form__group u-margin-bottom-medium">
                     <div className="form__radio-group">
                       <input

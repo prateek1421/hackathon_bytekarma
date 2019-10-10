@@ -32,6 +32,7 @@ class App extends React.Component {
         <Header user={this.state.userObject}/>        
         <Trade user={this.state.userObject}/>
         <AddExpenses user={this.state.userObject}/>
+        <SunBurst/>
         <Footer />
       </React.Fragment>
     );

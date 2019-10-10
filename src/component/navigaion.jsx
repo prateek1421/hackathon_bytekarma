@@ -18,13 +18,13 @@ const Navigaion = props => {
       <nav className="navigation__nav">
         <ul className="navigation__list">
           <li className="navigation__item">
-            <a href="#" className="navigation__link navigation__width">
+            <a href="#homeSection" className="navigation__link navigation__width">
               home
             </a>
           </li>
           <li className="navigation__item">
             <a href="#" className="navigation__link navigation__width">
-              cc report
+             Carbon expenses
             </a>
           </li>
           <li className="navigation__item">

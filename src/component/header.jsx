@@ -3,7 +3,7 @@ class Header extends Component {
    
   render(){
     return (
-      <header className="header">
+      <header className="header" id ="homeSection">
         <div className="header__logo-box">
           <img src="/img/logo2.png" alt="Logo" className="header__logo" />
         </div>
@@ -16,15 +16,18 @@ class Header extends Component {
               <strong>A</strong>ctive trading
             </span>
             <div>
-                
-              <div className="heading-primary--note">
+                <div className="row">
+                  
+                </div>
+              {/* <div className="heading-primary--note">
                 carbon credits used:{this.props.user?(this.props.user.CarbonPointsUsed*100
                 /this.props.user.TotalCarbonPoints)
         .toFixed(2):0}%
                 <div className="heading-primary--note__progress" style={{width:(this.props.user?(this.props.user.CarbonPointsUsed*100
                 /this.props.user.TotalCarbonPoints)
         .toFixed(2):0)+"%"}}>&nbsp; </div>
-              </div>
+              </div> */}
+
             </div>
           </h1>
   

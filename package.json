@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "json-groupby": "^1.1.0",
     "react": "^16.10.2",
     "react-datepicker": "^2.9.6",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-vis": "^1.11.7"
   },
   "scripts": {
     "start": "react-scripts start",

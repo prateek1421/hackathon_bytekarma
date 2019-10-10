@@ -70,12 +70,13 @@ class AddExpense extends Component {
     
     return (
       <section id="addExpenseSection" className="section-book">
+         <div className="u-margin-bottom-medium at-center-text">
+                  <h2 className="heading-secondary color-dark">Add carbon expenses </h2>
+                </div>
         <div className="row">
           <div className="book2">
             <div className="book__form">
-                <div className="u-margin-bottom-medium">
-                  <h2 className="heading-secondary">Add carbon expenses </h2>
-                </div>
+               
   
                 <div className="form__group">
                   <label htmlFor="name" className="form__label">
@@ -123,7 +124,7 @@ class AddExpense extends Component {
                 <input type="text" className="form__input form__input__width" onChange={this.handleAmount}/>
                 </div>
                 <div className="form__group">
-                  <button className="btn btn--green" onClick={this.addExpenses}>Next step &rarr;</button>
+                  <button className="btn btn--green" onClick={this.addExpenses}>Submit &rarr;</button>
                 </div>
             </div>
           </div>

@@ -16,18 +16,19 @@ class Header extends Component {
               <strong>A</strong>ctive trading
             </span>
             <div>
-                <div className="row">
-                  
-                </div>
-              {/* <div className="heading-primary--note">
-                carbon credits used:{this.props.user?(this.props.user.CarbonPointsUsed*100
-                /this.props.user.TotalCarbonPoints)
-        .toFixed(2):0}%
-                <div className="heading-primary--note__progress" style={{width:(this.props.user?(this.props.user.CarbonPointsUsed*100
-                /this.props.user.TotalCarbonPoints)
-        .toFixed(2):0)+"%"}}>&nbsp; </div>
-              </div> */}
 
+
+            <div class="row" style={{marginTop:"2rem"}} >
+              <div className="colx"><div className="heading-with-bottom-border">Total carbon credit 
+              <span className="ccFigure">{this.props.user?this.props.user.TotalCarbonPoints.toFixed(2): 0} </span>
+              cc</div></div>
+              <div className="colx"><div className="heading-with-bottom-border">Carbon credit used 
+              <span className="ccFigure">{this.props.user?this.props.user.CarbonPointsUsed.toFixed(2): 0 } </span>
+              cc</div></div>
+              <div className="colx"><div className="heading-with-bottom-border">Carbon emmition 
+              <span className="ccFigure">{this.props.user?(this.props.user.CarbonPointsUsed*4).toFixed(2): 0 } </span>
+              kg</div></div>
+            </div>
             </div>
           </h1>
   

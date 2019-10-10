@@ -8,6 +8,7 @@ import AddExpenses from "./component/addExpenses";
 import Trade from "./component/trade";
 import Footer from "./component/footer";
 import axios from "axios";
+import SunBurst from "./component/sunburst";
 axios.defaults.baseURL="https://carma-function.azurewebsites.net";
 class App extends React.Component {
   state={
@@ -25,10 +26,11 @@ class App extends React.Component {
   }
   render(){
     return (
+      
       <React.Fragment>
         <Navigaion />
-        <Header user={this.state.userObject}/>
-        <Trade />
+        <Header user={this.state.userObject}/>        
+        <Trade user={this.state.userObject}/>
         <AddExpenses user={this.state.userObject}/>
         <Footer />
       </React.Fragment>

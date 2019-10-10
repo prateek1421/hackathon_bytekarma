@@ -780,7 +780,13 @@ class SunBurst extends Component {
     console.log(this.props.user);
       return(
         <section id="sunburst-section" className="section-stories">
-<Sunburst
+            <div style={{textAlign:"center"}}>
+                <div style={{display:"inline-block"}}>
+                <div className="u-center-text u-margin-bottom-big" style={{marginBottom:"2rem"}}>
+          <h2 className="heading-secondary" >Carbon expenses</h2>
+        </div>
+
+                <Sunburst
 hideRootNode
   animation={{ damping: 20, stiffness: 300 }}
   data={this.createSunData(jsonInput)[0]}
@@ -797,6 +803,10 @@ hideRootNode
 >
   
 </Sunburst>
+
+                </div>
+            </div>
+
 
 
 

@@ -18,7 +18,7 @@ class Header extends Component {
             <div>
 
 
-            <div class="row" style={{marginTop:"2rem"}} >
+            <div className="row" style={{marginTop:"2rem"}} >
               <div className="colx"><div className="heading-with-bottom-border">Total carbon credit 
               <span className="ccFigure">{this.props.user?this.props.user.TotalCarbonPoints.toFixed(2): 0} </span>
               cc</div></div>

@@ -9,6 +9,7 @@ import Trade from "./component/trade";
 import Footer from "./component/footer";
 import axios from "axios";
 import SunBurst from "./component/sunburst";
+import ChatBotComponent from "./component/chatBot";
 axios.defaults.baseURL="https://carma-function.azurewebsites.net";
 class App extends React.Component {
   state={
@@ -33,6 +34,7 @@ class App extends React.Component {
         <Trade user={this.state.userObject}/>
         <AddExpenses user={this.state.userObject}/>
         <Footer />
+        <ChatBotComponent />
       </React.Fragment>
     );
   }

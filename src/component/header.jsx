@@ -29,7 +29,7 @@ class Header extends Component {
           </h1>
   
           <a href="#section-tours" className="btn btn--white btn--animated">
-            Your Cabon Expenses
+            Your Carbon Expenses
           </a>
         </div>
       </header>

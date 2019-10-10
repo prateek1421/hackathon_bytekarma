@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+
 class AddExpense extends Component {
   constructor(props,context) {
     super(props,context);
@@ -15,26 +16,36 @@ class AddExpense extends Component {
     };
   }
 
-  addExpenses = () => {
+  addExpenses = (event) => {
+    console.log("event");
+    console.log(event);
     var item = this.state.selectedItemType;
+    var itemType = "";
     if(item === "Electricity" || item === "Gas") {
-      this.setState({selectedItem: "Energy"});
+      itemType = "Energy";
     }
     else if (item === "Paper" || item === "Plastic" || item === "Glass") {
-      this.setState({selectedItem: "Waste"});
+      itemType = "Waste";
     }
     else {
-      this.setState({selectedItem: "Transport"});
+        itemType = "Transport";
     }
     let urlDataArray = document.location.href.split("/");
     console.log("urlDataArray");
+    console.log(this.props.user.id);
+    console.log(itemType);
+    console.log(this.state.selectedItemType);
+    console.log(this.state.selectedItemDescription);
+    console.log(this.state.selectedDate);
+    console.log(this.state.amount);
     axios.post("/api/addTransaction/"+this.props.user.id, {
-      item: this.state.selectedItem,
+      item: itemType,
       itemType: this.state.selectedItemType,
       description: this.state.selectedItemDescription,
       dateTime: this.state.selectedDate,
-      transactionCost: this.state.amount
-    });
+      transactionCost: this.state.amount,
+    }).then(json=>console.log(json.data));
+    return false;
   }
 
   handleDateChange = date => {
@@ -50,6 +61,8 @@ class AddExpense extends Component {
   }
 
   handleAmount = event => {
+    console.log("amount");
+    console.log(event.target.value);
     this.setState({amount : event.target.value});
   }
 
@@ -60,7 +73,6 @@ class AddExpense extends Component {
         <div className="row">
           <div className="book2">
             <div className="book__form">
-              <form action="#" className="form">
                 <div className="u-margin-bottom-medium">
                   <h2 className="heading-secondary">Add carbon expenses </h2>
                 </div>
@@ -72,7 +84,6 @@ class AddExpense extends Component {
                   <select
                             id="largex"
                             name="itemType"
-                            defaultValue="lease select item"
                             value={this.state.selectedItemType}
                             className="form__input form__input__width"
                             onChange={this.handleChange}
@@ -95,7 +106,7 @@ class AddExpense extends Component {
                   <label htmlFor="name" className="form__label">
                     Description
                   </label>
-                  <input type="text" defaultValue="Please enter description" value={this.state.selectedItemDescription}  
+                  <input type="text" value={this.state.selectedItemDescription}  
                   className="form__input form__input__width" onChange={this.handleDescription}/>
                 </div>
                 <div className="form__group">
@@ -109,12 +120,11 @@ class AddExpense extends Component {
                 <label htmlFor="email" className="form__label">
                     Amount
                   </label>
-                <input type="text" className="form__input form__input__width"/>
+                <input type="text" className="form__input form__input__width" onChange={this.handleAmount}/>
                 </div>
                 <div className="form__group">
                   <button className="btn btn--green" onClick={this.addExpenses}>Next step &rarr;</button>
                 </div>
-              </form>
             </div>
           </div>
         </div>
